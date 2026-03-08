@@ -63,7 +63,7 @@ After installing, restart your computer.
 
 Go to this repository:
 
-👉 https://github.com/maazyounas/WebDevi8
+👉 https://github.com/maazyounas/WebDevH8.git
 
 Click the green **Code** button
 Copy the HTTPS link.
@@ -87,7 +87,7 @@ cd Documents
 Paste this command:
 
 ```bash
-git clone https://github.com/maazyounas/WebDevi8.git
+git clone https://github.com/maazyounas/WebDevH8.git
 ```
 
 Press Enter.
@@ -99,7 +99,7 @@ Git will download all files to your computer.
 ## ✅ Step 5: Open the Project
 
 ```bash
-cd WebDevi8
+cd WebDevH8
 ```
 
 Then open it in VS Code:
