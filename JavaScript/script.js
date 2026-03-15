@@ -7,7 +7,7 @@ function showVariables(){
     const country = "Pakistan";
 
     document.getElementById("output").textContent =
-    "City: " + city + " | Age: " + age + " | Country: " + country;
+    "CityName: " + city + " | Age: " + age + " | Country: " + country;
 }
 
 

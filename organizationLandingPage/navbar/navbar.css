@@ -1,0 +1,51 @@
+body{
+    margin:0;
+    font-family: Arial;
+}
+
+/* Navbar */
+
+.navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#222;
+    padding:15px 40px;
+}
+
+/* Logo */
+
+.logo{
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* Nav Links */
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+}
+
+/* Enroll Button */
+
+#navbarEnrollBtn{
+    background:#ff6600;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+#navbarEnrollBtn:hover{
+    background:#ff4500;
+}
