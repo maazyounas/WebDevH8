@@ -1,10 +1,13 @@
-const exploreBtn = document.getElementById("heroExploreBtn");
-const enrollBtn = document.getElementById("heroEnrollBtn");
+document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
 
-exploreBtn.addEventListener("click", function(){
-    alert("Courses section coming soon!");
-});
+    if (target.id === "heroExploreBtn") {
+        alert("Courses section coming soon!");
+        return;
+    }
 
-enrollBtn.addEventListener("click", function(){
-    window.location.href = "../form/form.html";
+    if (target.id === "heroEnrollBtn") {
+        window.location.href = "../form/form.html";
+    }
 });
