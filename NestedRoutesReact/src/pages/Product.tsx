@@ -1,5 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom'
 
+
+
 const Product = () => {
   const location = useLocation();
   const isBaseProductPath = location.pathname === '/product' || location.pathname === '/product/';
