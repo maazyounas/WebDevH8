@@ -9,10 +9,13 @@ import {
   getStudents,
   createStudent,
   deleteStudent,
+  updateStudent,
 } from "./services/studentService";
 
 function App() {
   const [students, setStudents] = useState<Student[]>([]);
+  const [editingStudent, setEditingStudent] =
+    useState<Student | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -47,6 +50,26 @@ function App() {
     );
   };
 
+  const editStudent = async (student: Student) => {
+    if (!student._id) {
+      return;
+    }
+
+    const updatedStudent = await updateStudent(
+      student._id,
+      student
+    );
+
+    setStudents((currentStudents) =>
+      currentStudents.map((currentStudent) =>
+        currentStudent._id === updatedStudent._id
+          ? updatedStudent
+          : currentStudent
+      )
+    );
+    setEditingStudent(null);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="max-w-2xl mx-auto">
@@ -54,11 +77,17 @@ function App() {
           Student Management System
         </h1>
 
-        <StudentForm addStudent={addStudent} />
+        <StudentForm
+          addStudent={addStudent}
+          editStudent={editStudent}
+          editingStudent={editingStudent}
+          onCancelEdit={() => setEditingStudent(null)}
+        />
 
         <StudentList
           students={students}
           removeStudent={removeStudent}
+          onEdit={setEditingStudent}
         />
       </div>
     </div>

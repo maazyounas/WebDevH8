@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 
 import Student from "../models/Student";
 
-// GET STUDENTS
 export const getStudents = async (
   req: Request,
   res: Response
@@ -18,7 +17,6 @@ export const getStudents = async (
   }
 };
 
-// CREATE STUDENT
 export const createStudent = async (
   req: Request,
   res: Response
@@ -34,7 +32,6 @@ export const createStudent = async (
   }
 };
 
-// UPDATE STUDENT
 export const updateStudent = async (
   req: Request,
   res: Response
@@ -56,7 +53,6 @@ export const updateStudent = async (
   }
 };
 
-// DELETE STUDENT
 export const deleteStudent = async (
   req: Request,
   res: Response

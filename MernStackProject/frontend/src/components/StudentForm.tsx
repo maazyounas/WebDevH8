@@ -1,17 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { Student } from "../types/student";
 
 interface Props {
   addStudent: (student: Student) => Promise<void>;
+  editStudent: (student: Student) => Promise<void>;
+  editingStudent: Student | null;
+  onCancelEdit: () => void;
 }
 
-const StudentForm = ({ addStudent }: Props) => {
+const emptyFormData: Student = {
+  name: "",
+  email: "",
+  course: "",
+};
+
+const StudentForm = ({
+  addStudent,
+  editStudent,
+  editingStudent,
+  onCancelEdit,
+}: Props) => {
   const [formData, setFormData] = useState<Student>({
-    name: "",
-    email: "",
-    course: "",
+    ...emptyFormData,
   });
+
+  useEffect(() => {
+    if (editingStudent) {
+      setFormData(editingStudent);
+      return;
+    }
+
+    setFormData(emptyFormData);
+  }, [editingStudent]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -22,18 +43,18 @@ const StudentForm = ({ addStudent }: Props) => {
     });
   };
 
-  const handleSubmit = (
+  const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
 
-    void addStudent(formData);
+    if (editingStudent) {
+      await editStudent(formData);
+      return;
+    }
 
-    setFormData({
-      name: "",
-      email: "",
-      course: "",
-    });
+    await addStudent(formData);
+    setFormData(emptyFormData);
   };
 
   return (
@@ -68,9 +89,21 @@ const StudentForm = ({ addStudent }: Props) => {
         className="border p-2 w-full mb-3"
       />
 
-      <button className="bg-blue-500 text-white px-4 py-2 rounded">
-        Add Student
-      </button>
+      <div className="flex gap-3">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded">
+          {editingStudent ? "Update Student" : "Add Student"}
+        </button>
+
+        {editingStudent ? (
+          <button
+            type="button"
+            onClick={onCancelEdit}
+            className="bg-gray-400 text-white px-4 py-2 rounded"
+          >
+            Cancel
+          </button>
+        ) : null}
+      </div>
     </form>
   );
 };

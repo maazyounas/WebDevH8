@@ -9,16 +9,12 @@ import {
 
 const router = express.Router();
 
-// GET
 router.get("/", getStudents);
 
-// POST
 router.post("/", createStudent);
 
-// PUT
 router.put("/:id", updateStudent);
 
-// DELETE
 router.delete("/:id", deleteStudent);
 
 export default router;

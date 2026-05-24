@@ -12,6 +12,18 @@ export const getStudents = async (): Promise<Student[]> => {
   return response.data;
 };
 
+export const updateStudent = async (
+  id: string,
+  data: Student
+): Promise<Student> => {
+  const response = await axios.put(
+    `${API_URL}/${id}`,
+    data
+  );
+
+  return response.data;
+};
+
 export const createStudent = async (
   studentData: Student
 ): Promise<Student> => {
